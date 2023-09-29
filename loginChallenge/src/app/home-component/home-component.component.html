@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Kitchen fast</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a type="button" (click)="bringRecepies()" class="nav-link text-white" href="#">Menus</a>
+        </li>
+        <li class="nav-item">
+          <a type="button" (click)="volverLogin()" class="nav-link text-white" href="#">Cerrar sesión</a>
+        </li>
+      </ul>
+      <div class="navbar-text">
+        <span class="navbar-text text-white">
+         {{email}}
+        </span>
+      </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let receta of listaRecetas">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img [src]="receta.imgSource" class="img-fluid rounded-start" alt="{{ receta.titulo }}">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ receta.titulo }}</h5>
+                <p class="card-text">{{ receta.descripcion }}</p>
+                <button type="button" class="btn-primary btn " (click)="deleteRecepie(receta)">Borrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

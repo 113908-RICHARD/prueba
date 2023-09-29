@@ -1,0 +1,6 @@
+
+<app-login-component (usuarioIniciado)="getUsuarioLogin($event)" (emailUsuario)="getEmailUsuario($event)" *ngIf="mostrarLogin"></app-login-component>
+<app-home-component (cerrarSesionEmiter)="getCerrarSesion($event)" *ngIf="mostrarHome" [email]="email"></app-home-component>
+
+
+

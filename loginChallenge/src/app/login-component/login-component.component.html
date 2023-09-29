@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centering</title>
+  <style>
+    /* Add these styles to center the container */
+    body {
+      display: flex;
+      justify-content: center;
+      /* Center horizontally */
+      align-items: center;
+      /* Center vertically */
+      height: 100vh;
+      /* 100% of the viewport height */
+    }
+
+    /* Additional styles for your card div */
+    .card {
+      width: 30rem;
+      border: 1px solid black;
+      border-radius: 10px;
+    }
+
+    /* Your existing styles */
+    .form-group {
+      margin-bottom: 1rem;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title text-center display-6">Login</h5>
+      <form #formulario="ngForm" name="formulario" novalidate>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" name="email" #controlEmail="ngModel"
+            [(ngModel)]="email" required pattern="^[a-zA-Z0-9._%+-]+@frc.utn.edu.ar$" [ngClass]="{
+                    'is-valid': controlEmail.valid && (controlEmail.dirty || controlEmail.touched),
+                    'is-invalid': controlEmail.invalid && (controlEmail.dirty || controlEmail.touched)
+                  }">
+          <div *ngIf="controlEmail.invalid && (controlEmail.dirty || controlEmail.touched)" class="invalid-feedback">
+            Please provide a valid email address ending with "@frc.utn.edu.ar".
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" name="password"
+            #controlPassword="ngModel" [(ngModel)]="password" required pattern="^[0-9]+$" minlength="8" [ngClass]="{
+                    'is-valid': controlPassword.valid && (controlPassword.dirty || controlPassword.touched),
+                    'is-invalid': controlPassword.invalid && (controlPassword.dirty || controlPassword.touched)
+                  }">
+          <div *ngIf="controlPassword.invalid && (controlPassword.dirty || controlPassword.touched)"
+            class="invalid-feedback">
+            Password must be at least 8 numeric characters.
+          </div>
+        </div>
+        <button type="button" [disabled]="!formulario.valid" (click)="mostrarMenu()"
+          class="btn btn-primary mt-3 w-100">ingresar</button>
+      </form>
+
+
+    </div>
+  </div>
+</body>
+
+</html>
